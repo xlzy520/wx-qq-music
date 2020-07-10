@@ -140,11 +140,32 @@ const getTopMusicList = (topid) => {
   })
 }
 
+const wxCloudCallFunction = (name, data)=>{
+  return new Promise((resolve, reject) => {
+    wx.cloud.callFunction({
+      name,
+      data
+    }).then((res) => {
+      if (res.errMsg === "cloud.callFunction:ok") {
+        resolve(res.result)
+      }
+    }).catch((err) => {
+      console.error(err);
+      wx.showToast({
+        icon: "none",
+        title: "操作失败"
+      });
+      reject(err)
+    })
+  })
+}
+
 module.exports = {
   getHotSearch: getHotSearch,
   search: search,
   getSongDetails: getSongDetails,
   getSingerSongs: getSingerSongs,
   getTopList: getTopList,
-  getTopMusicList: getTopMusicList
+  getTopMusicList: getTopMusicList,
+  wxCloudCallFunction: wxCloudCallFunction,
 }
