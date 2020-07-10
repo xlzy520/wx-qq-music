@@ -5,6 +5,11 @@
         <view class="name">{{item.name}}</view>
         <view class="desc">{{item.singer}}·{{item.album}}</view>
       </view>
+      <image wx:if="{{likes[0].like}}" catch:tap="onLike" data-like="{{likes[0].like}}"
+             data-music="{{item}}"
+             class="like" src="{{'../../../static/image/like.png'}}"></image>
+      <image wx:else class="like" catch:tap="onLike" data-like="{{likes[0].like}}" data-music="{{item}}"
+             src="{{'../../../static/image/no-like.png'}}"></image>
     </view>
   </view>
 </view>

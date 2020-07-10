@@ -1,60 +1,69 @@
 .header {
-    position: relative;
+	position: relative;
 }
 .header .bg-image {
-    width: 100%;
-    height: 400rpx;
-}
-.userinfo-wrapper {
-    position: absolute;
-    margin: auto;
-    width: 128rpx;
-    height: 128rpx;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+	width: 100%;
+	height: 400rpx;
 }
 .userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.user {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 30rpx;
+}
+.user-avatar {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.user-name {
+	margin-left: 20rpx;
+	overflow: hidden;
 }
 
 .userinfo-avatar {
-    width: 128rpx;
-    height: 128rpx;
-    border-radius: 50%;
+	width: 128rpx;
+	height: 128rpx;
+	border-radius: 50%;
 }
 
 .userinfo-nickname {
-    text-align: center;
-    color: #aaa;
-    font-size: 12px;
+	text-align: center;
+	color: #aaa;
+	font-size: 12px;
 }
 .content {
-    height: 100%;
-    margin-top: 30rpx;
+	height: 100%;
+	margin-top: 30rpx;
 }
 .content .tab .item{
-    display: flex;
-    font-size: 14px;
-    color: #aaa;
-    padding: 20rpx 50rpx;
-    height: 50rpx;
-    line-height: 50rpx;
-    border-bottom: 1rpx solid #333;
+	display: flex;
+	font-size: 14px;
+	color: #aaa;
+	padding: 20rpx 50rpx;
+	height: 50rpx;
+	line-height: 50rpx;
 }
 .tab .item .icon ,.tab .item .more {
-    flex: 0 0 60rpx;
-    text-align: center;
-    height: 50rpx;
-    line-height: 60rpx;
+	flex: 0 0 60rpx;
+	text-align: center;
+	height: 50rpx;
+	line-height: 60rpx;
 }
 .tab .item .text {
-    flex: 0 0 540rpx;
+	flex: 0 0 600rpx;
 }
-.tab .item .icon image,.tab .item .more image ,.tab .item .more .switch{
-    width: 38rpx;
-    height: 38rpx;
+.tab .item .icon image,
+.tab .item .more image ,
+.tab .item .more .switch{
+	width: 38rpx;
+	height: 38rpx;
 }

@@ -1,0 +1,3 @@
+<view>
+  <music-list title="{{title}}" songs="{{favoriteMusicList}}"></music-list>
+</view>

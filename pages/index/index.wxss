@@ -1,7 +1,9 @@
 /**index.wxss**/
 .slider-wrapper{
-  height: 300rpx;
+	height: 300rpx;
+	padding: 0 30rpx;
 }
+
 .userinfo {
   display: flex;
   flex-direction: column;

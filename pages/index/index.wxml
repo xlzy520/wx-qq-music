@@ -5,7 +5,7 @@
     <i class="icon-search"></i>
   </view>
   <view class="slider-wrapper">
-    <my-slider parent="{{is_modal_Msg}}" slider="{{slider}}"></my-slider>
+    <my-slider slider="{{slider}}"></my-slider>
   </view>
   <view class="hot-list">
     <view class="list-title">热门榜单推荐</view>

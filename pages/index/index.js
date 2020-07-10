@@ -5,15 +5,15 @@ const api = require("../../utils/api.js")
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    is_modal_Hidden: false,
-    is_modal_Msg: '我是一个自定义组件',
-    slider: [],
+    slider: [
+      {picUrl: 'https://y.gtimg.cn/music/common//upload/t_musicmall_focus/2610445.jpg?max_age=2592000'},
+      {picUrl: 'https://y.gtimg.cn/music/common//upload/t_musicmall_focus/2555112.jpg?max_age=2592000'},
+      {picUrl: 'https://y.gtimg.cn/music/common//upload/t_musicmall_focus/2552775.jpg?max_age=2592000'},
+      {picUrl: 'https://y.gtimg.cn/music/common//upload/t_musicmall_focus/2482763.jpg?max_age=2592000'},
+    ],
     list: [],
-    rankTitle: [{
+    rankTitle: [
+      {
       id: 4,
       name: '流行榜'
     }, {
@@ -60,17 +60,6 @@ Page({
     const _that = this
     wx.request({
       url: "https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&platform=h5&uin=0&needNewCode=1&jsonpCallback=callback",
-      data: {
-        g_tk: 5381,
-        inCharset: 'utf-8',
-        outCharset: 'utf-8',
-        notice: 0,
-        format: 'jsonp',
-        platform: 'h5',
-        uin: 0,
-        needNewCode: 1,
-        jsonpCallback: 'callback'
-      },
       success: function (res) {
         if (res.statusCode === 200) {
           var res1 = res.data.replace("callback(", "")
