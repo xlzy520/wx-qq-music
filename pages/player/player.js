@@ -232,12 +232,10 @@ Page({
   prev: function () {
     app.currentIndex = this.getNextIndex(false)
     this._init()
-    this.addToHistory()
   },
   next: function () {
     app.currentIndex = this.getNextIndex(true)
     this._init()
-    this.addToHistory()
   },
   /**
    * 获取不同播放模式下的下一曲索引
