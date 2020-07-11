@@ -11,11 +11,11 @@ exports.main = async (event, context) => {
   const {
     OPENID,
   } = cloud.getWXContext()
-  const { collectionName, ...params } = event
+  const { collectionName, type } = event
   try {
     return await db.collection(collectionName).where({
       open_id: OPENID,
-      ...params
+      type
     }).get()
   } catch (e) {
     console.error(e)
