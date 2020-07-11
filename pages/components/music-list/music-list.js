@@ -1,5 +1,6 @@
 const app = getApp().globalData
 const util = require('../../../utils/util.js')
+const api = require('../../../utils/api.js')
 
 Component({
   data: {

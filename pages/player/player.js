@@ -24,7 +24,7 @@ Page({
   },
 
   onShow: function () {
-    if (!this.data.currentSong) {
+    if (!this.data.currentSong || this.data.songslist !== app.songlist) {
       this._init()
       this.setData({
         uid: this.getUid()
