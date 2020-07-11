@@ -1,3 +1,11 @@
+
+<wxs module="utils">
+  var hasLike = function(arr=[], id){
+    return arr.indexOf(id)>-1
+  }
+  module.exports.hasLike = hasLike;
+</wxs>
+
 <view class="song-list">
   <view>
     <view bindtap="selectItem" data-songs="{{songs}}" data-index="{{index}}" wx:for="{{songs}}" wx:key="{{index}}" class="item">
@@ -5,10 +13,12 @@
         <view class="name">{{item.name}}</view>
         <view class="desc">{{item.singer}}·{{item.album}}</view>
       </view>
-      <image wx:if="{{likes[0].like}}" catch:tap="onLike" data-like="{{likes[0].like}}"
+      <image wx:if="{{utils.hasLike(likeMusicIds, item.id)}}" catch:tap="onLike"
+             data-like="{{true}}"
              data-music="{{item}}"
              class="like" src="{{'../../../static/image/like.png'}}"></image>
-      <image wx:else class="like" catch:tap="onLike" data-like="{{likes[0].like}}" data-music="{{item}}"
+      <image wx:else class="like" catch:tap="onLike"
+             data-like="{{false}}" data-music="{{item}}"
              src="{{'../../../static/image/no-like.png'}}"></image>
     </view>
   </view>

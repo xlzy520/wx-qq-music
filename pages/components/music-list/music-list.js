@@ -3,7 +3,9 @@ const util = require('../../../utils/util.js')
 
 Component({
   data: {
-    zIndex: 50
+    zIndex: 50,
+    hasFavorite: false,
+    likePlayList: []
   },
   properties: {
     title: {
@@ -25,6 +27,10 @@ Component({
     songs: {
       type: Array,
       value: []
+    },
+    type: {
+      type: Number,
+      value: 2
     }
   },
   ready: function () {
@@ -35,6 +41,9 @@ Component({
     this.setData({
       bgStyle: `background-image:url(${this.properties.image})`
     })
+  },
+  attached() {
+    this.getLikePlayList()
   },
   methods: {
     /*针对不同手机设置songlist的top值*/
@@ -85,6 +94,52 @@ Component({
       app.songlist = this.properties.songs
       wx.switchTab({
         url: '/pages/player/player'
+      })
+    },
+    
+    addFavorite(){
+      const type = this.properties.type
+      let music = {}
+      if (type === 2) {
+        music = app._selectItemRank
+      } else if (type === 3) {
+        music = app.selectsinger
+      }
+      const hasFavorite = this.data.hasFavorite
+      const name = hasFavorite ? 'delete': 'add'
+      const data = {
+        collectionName: 'favorite',
+        type
+      }
+      if (hasFavorite) {
+        const id = music.id
+        data._id = this.data.likePlayList.find(f => f.music.id === id)._id
+      } else {
+        data.music = music
+      }
+      api.wxCloudCallFunction(name, data).then((res) => {
+        this.getLikePlayList()
+      })
+      
+    },
+    getLikePlayList(){
+      const type = this.properties.type
+      api.wxCloudCallFunction('getLists', {
+        collectionName: 'favorite',
+        type
+      }).then((res) => {
+        const likePlayList = res.data
+        let id;
+        if (type === 2) {
+          id = app.topId
+        } else if (type === 3) {
+          id = app.selectsinger.id
+        }
+        const hasFavorite = likePlayList.findIndex(f=> f.music.id === id) > -1
+        this.setData({
+          hasFavorite,
+          likePlayList
+        })
       })
     },
     /*向父组件推送滚动到底部的事件*/

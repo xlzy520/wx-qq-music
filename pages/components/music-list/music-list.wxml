@@ -6,6 +6,10 @@
         <i class="icon-play"></i>
         <view class="text">随机播放全部</view>
       </view>
+      <view class="play favorite" bindtap="addFavorite" wx:if="{{type!==1 && type!==4}}">
+        <i class="icon-favorite"></i>
+        <view class="text">{{hasFavorite?'已收藏': '收藏'}}</view>
+      </view>
     </view>
     <view class="filter" ref="filter"></view>
   </view>

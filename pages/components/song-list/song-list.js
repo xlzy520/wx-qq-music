@@ -8,11 +8,9 @@ Component({
     }
   },
   data: {
-    likeMusics: [
-        {like: true, _id: 2},
-      ]
+    likeMusicIds: []
   },
-  onLoad(){
+  attached(){
     this.getLikes()
   },
   methods: {
@@ -34,16 +32,29 @@ Component({
           music,
           type: 1
         }).then((res) => {
-        
+          const newData = [...this.data.likeMusicIds, music.id]
+          app.globalData.likeMusics.push({
+            _id: res._id,
+            music: {
+              id: music.id
+            }
+          })
+          this.setData({
+            likeMusicIds: newData
+          })
         })
       } else {
+        const _id = app.globalData.likeMusics.find(value => value.music.id === music.id)._id
         api.wxCloudCallFunction('delete', {
-          _id: this.data.like[0]._id
-  
+          _id,
+          collectionName: 'favorite',
         }).then((res) => {
-        
-        }).catch((err) => {
-        
+          const index = this.data.likeMusicIds.findIndex(f=> f === music.id)
+          this.data.likeMusicIds.splice(index, 1)
+          const newData = this.data.likeMusicIds
+          this.setData({
+            likeMusicIds: newData
+          })
         })
       }
     
@@ -55,11 +66,11 @@ Component({
       }).then((res) => {
         app.globalData.likeMusics = res.data
         this.setData({
-          likeMusics: res.data
+          likeMusicIds: res.data.map(v=> v.music.id)
         })
       }).catch((err) => {
      
       })
-    }
+    },
   }
 })

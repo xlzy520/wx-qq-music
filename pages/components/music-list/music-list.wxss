@@ -27,6 +27,7 @@
     background-size: cover;
 }
 .music-list .bg-image .play-wrapper {
+	display: flex;
     position: absolute;
     bottom: 20px;
     z-index: 50;
@@ -43,6 +44,10 @@
     color: #ffcd32;
     border-radius: 100px;
     font-size: 0;
+}
+.music-list .bg-image .play-wrapper .play.favorite{
+	border: 1px solid #32ff76;
+	color: #32ff76;
 }
 .music-list .bg-image .play-wrapper .play .text {
     display: inline-block;
