@@ -1,7 +1,7 @@
 const api = require('../../utils/api.js')
 Page({
   data: {
-    favoriteMusicList: [],
+    history: [],
     title: ''
   },
   onLoad: function () {
@@ -9,12 +9,11 @@ Page({
   },
   getFavoriteMusicList () {
     api.wxCloudCallFunction('getLists', {
-      collectionName: 'favorite',
-      type: 1
+      collectionName: 'history',
     }).then(res=>{
       this.setData({
-        favoriteMusicList: res.data.map(v=> v.music),
-        title: "我喜欢的音乐"
+        history: res.data.map(v=> v.music),
+        title: "播放历史"
       })
     })
   },

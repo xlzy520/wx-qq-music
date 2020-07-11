@@ -146,6 +146,7 @@ const wxCloudCallFunction = (name, data)=>{
       name,
       data
     }).then((res) => {
+      console.log(res);
       if (res.errMsg === "cloud.callFunction:ok") {
         resolve(res.result)
       }

@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "我喜欢的音乐",
   "usingComponents": {
     "loading": "../components/loading/loading",
     "music-list": "../components/music-list/music-list"
-  }
+  },
+  "navigationBarTitleText": "播放历史"
 }

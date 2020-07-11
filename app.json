@@ -1,14 +1,16 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/favorite-music/index",
     "pages/my/my",
-    "pages/logs/logs",
     "pages/singer/singer",
     "pages/singer-detail/singer-detail",
     "pages/player/player",
     "pages/search/search",
     "pages/top-list/top-list",
-    "pages/favorite-music/index"
+    "pages/history/index",
+    "pages/favorite-rank/index",
+    "pages/favorite-singer/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

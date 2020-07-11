@@ -1,0 +1,4 @@
+<view>
+  <music-list title="{{title}}" image="https://qpic.y.qq.com/music_cover/qH8rLHHhL8O8Iibm56uPzJzCymHeVjAklHxWZWUSe9AeqRawJjyOswQ/300?n=1"
+              type="{{4}}" songs="{{history}}"></music-list>
+</view>

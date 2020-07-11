@@ -1,0 +1,21 @@
+<view>
+  <view class="hot-list">
+    <view class="rank" ref="rank">
+      <view :data="topList" class="toplist" ref="toplist">
+        <view>
+          <view bindtap="_selectItemRank" data-data="{{item}}" class="item" wx:for="{{topList}}">
+            <view class="icon">
+              <image lazy-load width="100" height="100" src="{{item.picUrl}}"/>
+            </view>
+            <view class="songlist">
+              <view class="song" wx:for="{{item.songList}}">
+                <text>{{index + 1}}.</text>
+                <text>{{item.songname}}-{{item.singername}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
