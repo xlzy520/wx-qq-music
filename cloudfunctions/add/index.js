@@ -12,12 +12,12 @@ exports.main = async (event, context) => {
     OPENID,
   } = cloud.getWXContext()
   const { collectionName, ...params } = event
-  return await db.collection(collectionName).add({
+  // 需要前后加字符串，否则会出现一直添加在第一张表上的情况
+  return await db.collection(''+collectionName+'').add({
     data: {
       open_id: OPENID,
       ...params,
       createdTime: new Date().getTime(),
     }
   })
-  
 }
