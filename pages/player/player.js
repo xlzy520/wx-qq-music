@@ -2,6 +2,7 @@ const app = getApp().globalData
 const song = require('../../utils/song.js')
 const Lyric = require('../../utils/lyric.js')
 const util = require('../../utils/util.js')
+const api = require("../../utils/api.js")
 
 const SEQUENCE_MODE = 1
 const RANDOM_MOD = 2
@@ -23,10 +24,12 @@ Page({
   },
 
   onShow: function () {
-    this._init()
-    this.setData({
-      uid: this.getUid()
-    })
+    if (!this.data.currentSong) {
+      this._init()
+      this.setData({
+        uid: this.getUid()
+      })
+    }
   },
 
   //初始化
@@ -122,6 +125,7 @@ Page({
         this._init()
         return
       }
+      this.addToHistory()
       this.next()
     })
     // 监听播放拿取播放进度
@@ -228,10 +232,12 @@ Page({
   prev: function () {
     app.currentIndex = this.getNextIndex(false)
     this._init()
+    this.addToHistory()
   },
   next: function () {
     app.currentIndex = this.getNextIndex(true)
     this._init()
+    this.addToHistory()
   },
   /**
    * 获取不同播放模式下的下一曲索引
@@ -288,6 +294,14 @@ Page({
   changeDot: function (e) {
     this.setData({
       currentDot: e.detail.current
+    })
+  },
+  addToHistory(){
+    api.wxCloudCallFunction('add', {
+      collectionName: 'history',
+      music: this.data.currentSong,
+    }).then((res) => {
+      console.log(res);
     })
   }
 })

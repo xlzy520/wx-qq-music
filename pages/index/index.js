@@ -53,32 +53,7 @@ Page({
     })
   },
   onLoad: function () {
-    this.getRecommenData()
     this._getRankData()
-  },
-  getRecommenData: function () {
-    const _that = this
-    wx.request({
-      url: "https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&platform=h5&uin=0&needNewCode=1&jsonpCallback=callback",
-      success: function (res) {
-        if (res.statusCode === 200) {
-          var res1 = res.data.replace("callback(", "")
-          var res2 = JSON.parse(res1.replace(")", ""))
-          _that.setData({
-            slider: res2.data.slider,
-            songList: res2.data.songList
-          })
-        }
-      }
-    })
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
   },
   toSingerPage: function (event) {
     app.globalData.selectsinger = {}
@@ -115,6 +90,7 @@ Page({
   _selectItemRank: function (event) {
     const data = event.currentTarget.dataset.data
     app.globalData.topId = data.id
+    app.globalData._selectItemRank = data
     wx.navigateTo({
       url: '/pages/top-list/top-list'
     })

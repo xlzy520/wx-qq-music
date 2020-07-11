@@ -30,25 +30,4 @@
       </view>
     </view>
   </view>
-  <view class="recommend-list">
-    <text class="list-title">热门歌单推荐</text>
-    <view>
-      <view wx:for="{{songList}}" class="item" wx:key="{{item.id}}" bindtap="toSingerPage"
-            data-image="{{item.picUrl}}"
-            data-id="{{item.id}}"
-            data-title="{{item.songListDesc}}">
-        <view class="icon">
-          <image lazy-load src="{{item.picUrl}}" class="image"/>
-        </view>
-        <view class="text">
-          <view style="margin-bottom: 20rpx">
-            <text class="name" v-html="item.creator.name">{{item.songListAuthor}}</text>
-          </view>
-          <view>
-            <text class="desc" v-html="item.dissname">{{item.songListDesc}}</text>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
 </scroll-view>
