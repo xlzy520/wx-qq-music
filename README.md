@@ -1,7 +1,7 @@
 # wx-qq-music
->A wxapp music player 一个微信小程序的音乐播放器  现已上线微信小程序  可以搜索"ChickenMusic音乐播放器"查找本小程序
-
 基于wxmusic项目，加入云开发功能，以及一些功能优化
+
+云开发配置：favorite表、history表
 
 # 功能列表
 ### 首页：歌曲歌手搜索，轮播图，各大榜单，热门歌单
